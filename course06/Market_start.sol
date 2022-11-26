@@ -120,7 +120,7 @@ contract Market is IERC721Receiver {
         emit NewOrder(_seller, _tokenId, _price);
     }
 
-    function removeListing(uint256 _tokenId) public {
+    function removeListing(uint256 _tokenId) internal {
          idToOrderIndex[orders[orders.length-1].tokenId]=idToOrderIndex[_tokenId];
          orders[idToOrderIndex[_tokenId]]=orders[orders.length-1];// 此处编写业务逻辑
          orders.pop();
